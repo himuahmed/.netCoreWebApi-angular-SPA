@@ -2,6 +2,7 @@
     
   <div class="text-center mb-4">
     <h1>Register</h1>
+    <hr> 
   </div>
   <div class="mb-3">
     <input type="text" class="form-control"  name="username" placeholder="Username" [(ngModel)]="model.username" required>
@@ -9,6 +10,6 @@
   <div class="mb-3">
     <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="model.password" required>
   </div>
-  <button type="submit" class="btn btn-success">Submit</button>
-  <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  <button type="submit" class="btn btn-success mr-sm-2">Submit</button>
+  <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

@@ -10,21 +10,30 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { AlertifyService } from './_services/alertify.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [				
     AppComponent,
       HeaderComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule
+     
   ],
   providers: [
     AuthService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    AlertifyService,
   ],
   bootstrap: [AppComponent]
 })
