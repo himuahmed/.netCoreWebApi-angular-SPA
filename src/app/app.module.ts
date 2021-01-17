@@ -13,21 +13,30 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { AlertifyService } from './_services/alertify.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MemberListComponent } from './member-list/member-list.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './route';
 
 
 @NgModule({
-  declarations: [				
+  declarations: [							
     AppComponent,
       HeaderComponent,
       HomeComponent,
       RegisterComponent,
+      MemberListComponent,
+      ListsComponent,
+      MessagesComponent
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes)
      
   ],
   providers: [
