@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AlertifyService } from './_services/alertify.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MemberListComponent } from './members/member-list/member-list.component';
@@ -20,6 +21,11 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './route';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
+import { MemberDetailsResolver } from './_resolvers/member-detail.resolver';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { NgxGalleryModule } from 'ngx-gallery-9';
+
 
 
 export function tokenGetter() {
@@ -35,15 +41,18 @@ export function tokenGetter() {
       MemberListComponent,
       ListsComponent,
       MessagesComponent,
-      MemberCardComponent
+      MemberCardComponent,
+      MemberDetailsComponent
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
+    NgxGalleryModule,
     JwtModule.forRoot({
       config:{
         tokenGetter: tokenGetter,
@@ -57,6 +66,8 @@ export function tokenGetter() {
     AuthService,
     ErrorInterceptorProvider,
     AlertifyService,
+    MemberDetailsResolver,
+    MemberListResolver
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ export interface User {
     id: number;
     username: string;
     knownAs: string;
+    introduction: string;
     gender: string;
     city: string;
     country: string;
