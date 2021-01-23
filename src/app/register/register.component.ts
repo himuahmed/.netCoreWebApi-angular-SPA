@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 
@@ -18,10 +18,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl(),
-      confirmPasssword: new FormControl()
-    });
+      username: new FormControl('',Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]),
+      confirmPassword: new FormControl('', [Validators.required])
+    }, this.comparePasswords);
   }
 
   register(){
@@ -30,8 +30,12 @@ export class RegisterComponent implements OnInit {
     }, error=>{
       this.alertify.error(error);
     }); */
-
+ 
     console.log(this.registerForm.value);
+  }
+  
+  comparePasswords(formGroup: FormGroup){
+    return formGroup.get('password').value ===  formGroup.get('confirmPassword').value ? null : {'mismatch': true};
   }
 
   cancel(){
