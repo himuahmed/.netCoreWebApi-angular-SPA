@@ -28,6 +28,10 @@ import { NgxGalleryModule } from 'ngx-gallery-9';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/oreventUnsavedChanges.guard';
+import { MomentModule } from 'ngx-moment';
+
+
+
 
 
 
@@ -46,7 +50,9 @@ export function tokenGetter() {
       MessagesComponent,
       MemberCardComponent,
       MemberDetailsComponent,
-      MemberEditComponent
+      MemberEditComponent,
+
+      
    ],
   imports: [
     BrowserModule,
@@ -58,6 +64,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
+    MomentModule,
     JwtModule.forRoot({
       config:{
         tokenGetter: tokenGetter,
