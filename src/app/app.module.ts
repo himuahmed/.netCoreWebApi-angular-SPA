@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AlertifyService } from './_services/alertify.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +30,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/oreventUnsavedChanges.guard';
 import { MomentModule } from 'ngx-moment';
+
 
 
 
@@ -61,6 +63,7 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     BrowserAnimationsModule,
+    PaginationModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
