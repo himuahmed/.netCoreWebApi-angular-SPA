@@ -14,7 +14,14 @@ export class MemberListComponent implements OnInit {
 
   pagination: Pagination;
   users: User[];
-  constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
+  user: User = JSON.parse(localStorage.getItem('user'));
+  genderList = [{value:'male', display: "Males"},{value:'female', display: "Females"}];
+  userParams: any = [];
+
+  
+  constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { 
+    console.log("Current user = "+this.user);
+  }
 
   ngOnInit() {
     this.route.data.subscribe(data=>{
@@ -22,6 +29,11 @@ export class MemberListComponent implements OnInit {
       this.pagination = data['usersResolver'].pagination;
       console.log(this.pagination);
     });
+
+    /* this.userParams.gender = this.user.gender == 'male' ? 'female' : 'male'; */
+    this.userParams.gender = "male";
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 100;
   }
 
   pageChanged(event: any): void {
@@ -29,8 +41,17 @@ export class MemberListComponent implements OnInit {
     this.getUsers();
   }
 
+  resetFilter(){
+    /* this.userParams.gender = this.user.gender == 'male' ? 'female' : 'male'; */
+    this.userParams.gender = "male";
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 100;
+    this.getUsers();
+
+  }
+
   getUsers(){
-    this.userService.getUsers(this.pagination.currentPage,this.pagination.itemsPerPage).subscribe((result: PaginatedResult<User[]>)=>{
+    this.userService.getUsers(this.pagination.currentPage,this.pagination.itemsPerPage, this.userParams).subscribe((result: PaginatedResult<User[]>)=>{
       this.users = result.result;
       this.pagination = result.pagination;
     }, error => {
