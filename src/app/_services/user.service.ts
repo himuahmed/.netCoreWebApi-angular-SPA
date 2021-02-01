@@ -53,7 +53,9 @@ export class UserService {
      return this.HttpClient.put(this.baseUrl + 'users/'+ id, user);
   }
 
-  gg(): Observable<any[]>{
-    return this.HttpClient.get<any[]>(this.baseUrl2);
+  likeUser(userId: number, recipient:number)
+  {
+    return this.HttpClient.post(this.baseUrl + 'users/' + userId +"/like/" + recipient, {});
   }
+
 }

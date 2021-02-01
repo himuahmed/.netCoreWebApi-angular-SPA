@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient,private authService: AuthService,private userService: UserService,private alertify: AlertifyService) { }
 
   ngOnInit() { 
-    /* this.getUsers(); */
+ 
   }
 
   registerToggle(){
@@ -31,13 +31,5 @@ export class HomeComponent implements OnInit {
   isAuthenticated() {
     this.isLoggedIn = this.authService.IsLoggedIn();
   }
-
-    getUsers(){
-    this.userService.gg().subscribe((user: any)=>{
-      this.emp = user;
-    }, error => {
-      this.alertify.error(error);
-    });
-  } 
 
 }
